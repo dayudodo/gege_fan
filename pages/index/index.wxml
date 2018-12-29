@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+  <CardItem src="{{src[0]}}" bindtap="parentClick"></CardItem>
+  <CardItem src="{{src[1]}}" bindtap="parentClick"></CardItem>
+  <CardItem src="{{src[0]}}" bindtap="parentClick"></CardItem>
+  <CardItem src="{{src[1]}}" bindtap="parentClick"></CardItem>
+
+</view>
