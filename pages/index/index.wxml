@@ -1,8 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <CardItem src="{{src[0]}}" bindtap="parentClick"></CardItem>
-  <CardItem src="{{src[1]}}" bindtap="parentClick"></CardItem>
-  <CardItem src="{{src[0]}}" bindtap="parentClick"></CardItem>
-  <CardItem src="{{src[1]}}" bindtap="parentClick"></CardItem>
+  <view wx:for="{{showArray}}" wx:for-index="idx" wx:key="idx">
+    <CardItem src="{{item}}" bindtap="parentClick" data-idx="{{idx}}"></CardItem>
+  </view>
 
 </view>
