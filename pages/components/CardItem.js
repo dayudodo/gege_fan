@@ -9,7 +9,21 @@ Component({
       type: String,
       value: '',
     },
-    tapEffect: {
+    show: {
+      type: Boolean,
+      value: true,
+      observer: function(newVal, oldVal) {
+        console.log('observer: ', newVal)
+        if( false == newVal ){
+          this.setData({
+            _hidden: true,
+            showEffect: 'hide'
+          })
+        }
+
+      }
+    },
+    showEffect: {
       type: String,
       value: '',
 
@@ -20,22 +34,23 @@ Component({
    * 组件的初始数据
    */
   data: {
-    flip_src:''
+    _hidden: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    clickCard: function () {
+
+    clickCard: function() {
       this.setData({
-        tapEffect: 'animated rotateIn'
+        showEffect: 'animated rotateIn'
       })
       setTimeout(() => {
         //设置成新图片 
         this.setData({
           flip_src: this.properties.src,
-          tapEffect: ''
+          showEffect: ''
         })
       }, 750)
     },

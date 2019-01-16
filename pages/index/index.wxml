@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view wx:for="{{showArray}}" wx:for-index="idx" wx:key="idx">
-    <CardItem src="{{item}}" bindtap="parentClick" data-idx="{{idx}}"></CardItem>
+    <CardItem src="{{item.src}}" show="{{item.show}}" bindtap="parentClick" data-id="{{item.id}}" data-index="{{idx}}"></CardItem>
   </view>
 
 </view>

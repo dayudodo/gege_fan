@@ -1,4 +1,4 @@
 <!--pages/CardItem.wxml-->
-<view class="item {{tapEffect}} " bindtap='clickCard'>
-  <image src="{{flip_src}}" mode='scaleToFill' class="item"></image>
+<view class="item {{showEffect}}"  bindtap='clickCard'>
+  <image src="{{flip_src}}" mode='scaleToFill' hidden="{{ _hidden }}" class="item"></image>
 </view>
