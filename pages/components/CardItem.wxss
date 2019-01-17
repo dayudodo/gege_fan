@@ -1,14 +1,10 @@
 /* pages/CardItem.wxss */
 @import "../animate.wxss";
 
-
-.item{
+.item {
   height: 200rpx;
   width: 200rpx;
   background-color: rgb(18, 13, 87);
   margin: 10rpx;
 }
 
-.hide{
-  background-color: white;
-}

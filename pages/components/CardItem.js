@@ -12,16 +12,16 @@ Component({
     show: {
       type: Boolean,
       value: true,
-      observer: function(newVal, oldVal) {
-        console.log('observer: ', newVal)
-        if( false == newVal ){
-          this.setData({
-            _hidden: true,
-            showEffect: 'hide'
-          })
-        }
+      // observer: function(newVal, oldVal) {
+      //   console.log('observer: ', newVal)
+      //   if( false == newVal ){
+      //     this.setData({
+      //       _hidden: true,
+      //       showEffect: 'hide'
+      //     })
+      //   }
 
-      }
+      // }
     },
     showEffect: {
       type: String,
