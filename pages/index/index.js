@@ -23,12 +23,14 @@ const randArray = function(src) {
 var questions = [{
     src: "https://www.gsenglish.cn/pictures/20171222145725sheep31513925751.jpg",
     id: 0,
-    show: true
+    showback: true,
+    right: false
   },
   {
     src: "https://www.gsenglish.cn/pictures/20130808071726look%20down%5Ecat%20look%20down%5Ecat%5Elooked%20down.jpg",
     id: 1,
-    show: true
+    showback: true,
+    right: false,
   }
 ]
 //用户的回答，也就是点击了哪个索引！
@@ -55,29 +57,40 @@ Page({
       showArray: showArray
     })
   },
-  isAnswerRight:function(){
+  isAnswerRight: function() {
     return g_answers[0].id == g_answers[1].id
   },
+
   parentClick: function(event) {
     let id = event.currentTarget.dataset.id
     let index = event.currentTarget.dataset.index
     console.log(event.target)
     console.log('parentClick', id)
-    g_answers.push({"id": id, "index": index})
+    g_answers.push({
+      "id": id,
+      "index": index
+    })
 
     if (g_answers.length == questions.length) {
       if (this.isAnswerRight()) {
-        console.log('right')
+        // 都不能再点击了，不然会出现其它错误！
+        
         //让正确的隐藏起来！比较方便笨的办法就是重新生成要显示的数组！
         let newShowArray = Array.from(this.data.showArray)
-        for(var item of g_answers){
-          newShowArray[item.index].show = false
+        for (var item of g_answers) {
+          newShowArray[item.index].right = true
         }
-        console.log("changed: ",g_answers, newShowArray)
+        console.log("newShowArray changed: ", g_answers, newShowArray)
 
-        this.setData({
-          showArray: newShowArray
-        })
+        //缓慢消失，
+
+        setTimeout(() => {
+          this.setData({
+            canClick: true,
+            showArray: newShowArray
+          })
+        }, 750+1000)
+
 
         //重置回答数组
         reset_answer()
@@ -93,8 +106,20 @@ Page({
 
 
       } else {
+        
+        console.log('wrong, 重新选择，并翻转图片的背景showback', g_answers)
+        let newShowArray = Array.from(this.data.showArray)
+        for (var item of g_answers) {
+          newShowArray[item.index].showback = true
+        }
+        console.log("newShowArray changed: ", g_answers, newShowArray)
+
+        //反映到子组件之后才会重置回答！
         reset_answer()
-        console.log('wrong, 重新选择', g_answers)
+        this.setData({
+          showArray: newShowArray
+        })
+
       }
     }
 

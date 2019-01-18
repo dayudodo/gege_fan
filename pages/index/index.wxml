@@ -1,10 +1,10 @@
 <!--index.wxml-->
 <view class="container">
   <view wx:for="{{showArray}}" wx:for-index="idx" wx:key="idx">
-    <view wx:if="{{ item.show }}">
-      <CardItem src="{{item.src}}" show="{{item.show}}" bindtap="parentClick" data-id="{{item.id}}" data-index="{{idx}}"></CardItem>
+    <view wx:if="{{ item.right }}" class="hide"> </view>
+    <view wx:else>
+      <CardItem src="{{item.src}}" showback="{{item.showback}}" bindtap="parentClick" data-id="{{item.id}}" data-index="{{idx}}"></CardItem>
     </view>
-    <view wx:else class="hide"></view>
 
 
   </view>

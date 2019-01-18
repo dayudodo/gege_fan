@@ -9,19 +9,18 @@ Component({
       type: String,
       value: '',
     },
-    show: {
+    showback: {
       type: Boolean,
       value: true,
-      // observer: function(newVal, oldVal) {
-      //   console.log('observer: ', newVal)
-      //   if( false == newVal ){
-      //     this.setData({
-      //       _hidden: true,
-      //       showEffect: 'hide'
-      //     })
-      //   }
+      observer: function(newVal, oldVal) {
+        console.log('observer showback : ', newVal)
+        if( true == newVal ){
+          this.setData({
+            _showback: true,
+          })
+        }
 
-      // }
+      }
     },
     showEffect: {
       type: String,
@@ -34,7 +33,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    _hidden: false
+    _showback: false
   },
 
   /**
@@ -49,6 +48,7 @@ Component({
       setTimeout(() => {
         //设置成新图片 
         this.setData({
+          _showback: false,
           flip_src: this.properties.src,
           showEffect: ''
         })

@@ -1,10 +1,18 @@
 /* pages/CardItem.wxss */
 @import "../animate.wxss";
 
+Page{
+  --bg-color:rgb(18, 13, 87);
+}
 .item {
   height: 200rpx;
   width: 200rpx;
-  background-color: rgb(18, 13, 87);
+  background-color: var(--bg-color);
   margin: 10rpx;
 }
 
+/* .back {
+  height: 200rpx;
+  width: 200rpx;
+  background-color: var(--bg-color);
+} */
