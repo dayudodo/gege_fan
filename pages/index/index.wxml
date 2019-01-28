@@ -3,7 +3,7 @@
   <view wx:for="{{showArray}}" wx:for-index="idx" wx:key="idx">
     <view wx:if="{{ item.right }}" class="hide"> </view>
     <view wx:else>
-      <CardItem src="{{item.src}}" showback="{{item.showback}}" bindtap="parentClick" data-id="{{item.id}}" data-index="{{idx}}"></CardItem>
+      <CardItem src="{{item.src}}" status="{{item.status}}" itemid="{{item.id}}" idx="{{idx}}" data-index="{{idx}}" bind:myclick="testChildClick"></CardItem>
     </view>
 
 
