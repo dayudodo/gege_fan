@@ -64,12 +64,65 @@ Page({
   },
   testChildClick: function(e) {
     console.log('from child:', e.detail)
+    //传递到子组件carditem中的id命名为itemid,是为了避免与id命名冲突，idx是为了写的方便
     let id = e.detail.itemid
     let index = e.detail.idx
     g_answers.push({
       "id": id,
       "index": index
     })
+
+    if (g_answers.length == questions.length) {
+      if (this.isAnswerRight()) {
+        //todo 都不能再点击了，不然会出现其它错误！
+
+        //让正确的隐藏起来！比较方便笨的办法就是重新生成要显示的数组！
+        let newShowArray = Array.from(this.data.showArray)
+        for (var item of g_answers) {
+          newShowArray[item.index].status = RIGHT
+        }
+        console.log("newShowArray changed: ", g_answers, newShowArray)
+
+        //缓慢消失，
+
+        setTimeout(() => {
+          this.setData({
+            canClick: true,
+            showArray: newShowArray
+          })
+        }, 750 + 1000)
+
+
+        //重置回答数组
+        reset_answer()
+
+        g_right_count++
+        console.log("胜利次数：", g_right_count)
+        if (g_right_count == questions.length) {
+          console.log('game over,  should restart')
+          reset_answer()
+          g_right_count = 0
+        }
+
+
+
+      } else {
+
+        console.log('wrong, 重新选择，并翻转图片的背景showback', g_answers)
+        let newShowArray = Array.from(this.data.showArray)
+        for (var item of g_answers) {
+          newShowArray[item.index].status = BACK
+        }
+        console.log("newShowArray changed: ", g_answers, newShowArray)
+
+        //反映到子组件之后才会重置回答！
+        reset_answer()
+        this.setData({
+          showArray: newShowArray
+        })
+
+      }
+    }
   },
 
   parentClick: function(event) {

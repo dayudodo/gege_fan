@@ -5,8 +5,5 @@
     <view wx:else>
       <CardItem src="{{item.src}}" status="{{item.status}}" itemid="{{item.id}}" idx="{{idx}}" data-index="{{idx}}" bind:myclick="testChildClick"></CardItem>
     </view>
-
-
   </view>
-
 </view>
