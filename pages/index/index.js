@@ -10,10 +10,10 @@ const shuffle = function(arr) {
 }
 
 const randArray = function(src) {
-  let resultArr = [];
+  let resultArr = new Array();
   for (let i = 0; i < src.length * 2; i++) {
 
-    resultArr.push(src[i % 2])
+    resultArr.push(Object.assign({},src[i % 2]))
   }
   shuffle(resultArr)
   return resultArr
@@ -71,6 +71,16 @@ Page({
       "id": id,
       "index": index
     })
+    //不管点击哪一个，都要先显示出来！
+    let clickArray = Array.from(this.data.showArray)
+    console.log("original clickArray", clickArray, clickArray[index])
+    clickArray[index].status  = IMAGE
+    console.log("child clicked! ", clickArray, clickArray[index])
+    this.setData({
+      canClick: true,
+      showArray: clickArray
+    })
+
 
     if (g_answers.length == questions.length) {
       if (this.isAnswerRight()) {
