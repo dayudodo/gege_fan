@@ -8,7 +8,14 @@ Page{
   height: 200rpx;
   width: 200rpx;
   background-color: var(--bg-color);
-  margin: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.right {
+  height: 200rpx;
+  width: 200rpx;
+  background-color: white;
+  margin-bottom: 10rpx;
 }
 
 /* .back {

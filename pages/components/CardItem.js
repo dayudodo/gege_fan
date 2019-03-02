@@ -1,5 +1,8 @@
 // pages/CardItem.js
-const BACK = 0, RIGHT = 1, IMAGE = 2
+const BACK = 0,
+  RIGHT = 1,
+  IMAGE = 2,
+  DELAY = 750
 
 Component({
   /**
@@ -11,13 +14,13 @@ Component({
       type: String,
       value: '',
     },
-    itemid:{
-      type:Number,
-      value:null
-    },
-    idx:{
+    itemid: {
       type: Number,
-      value:null
+      value: null
+    },
+    idx: {
+      type: Number,
+      value: null
     },
     status: {
       type: Number,
@@ -29,18 +32,41 @@ Component({
         //     _showback: true,
         //   })
         // }
-        switch(newVal){
+        switch (newVal) {
           case BACK:
-          console.log('back')
-          break;
+            console.log('back')
+            // this.setData({
+            //   _showback:true
+            // })
+            setTimeout(() => {
+              //设置成新图片 
+              this.setData({
+                _showback: true,
+              })
+            }, DELAY * 3)
+            break;
           case RIGHT:
             console.log('right')
-          break;
+            setTimeout(() => {
+              //设置成新图片 
+              this.setData({
+                _showright: true,
+              })
+            }, DELAY )
+            break;
           case IMAGE:
             console.log('image')
-          break;
+            setTimeout(() => {
+              //设置成新图片 
+              this.setData({
+                _showback: false,
+                flip_src: this.properties.src,
+                showEffect: ''
+              })
+            }, 750)
+            break;
           default:
-          throw new Error('status has error value:', newVal)
+            throw new Error('status has error value:', newVal)
         }
 
       }
@@ -53,10 +79,10 @@ Component({
   },
 
   /**
-   * 组件的初始数据
+   * 组件默认显示背面
    */
   data: {
-    _status: BACK
+    _status: BACK,
   },
 
   /**
@@ -65,19 +91,17 @@ Component({
   methods: {
 
     clickCard: function() {
-      const eventDetail={status: this.properties.status, idx: this.properties.idx, itemid: this.properties.itemid}
-      this.triggerEvent('myclick', eventDetail )
-      this.setData({
-        showEffect: 'animated rotateIn'
-      })
-      setTimeout(() => {
-        //设置成新图片 
+      const eventDetail = {
+        status: this.properties.status,
+        idx: this.properties.idx,
+        itemid: this.properties.itemid
+      }
+      if(this.properties.status != RIGHT){
+        this.triggerEvent('myclick', eventDetail)
         this.setData({
-          _showback: false,
-          flip_src: this.properties.src,
-          showEffect: ''
+          showEffect: 'animated rotateIn'
         })
-      }, 750)
+      }
     },
 
   }

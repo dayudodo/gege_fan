@@ -9,13 +9,15 @@ const shuffle = function(arr) {
   }
 }
 
+//生成一个随机的双倍数组，2*2，3*2，4*2这样
 const randArray = function(src) {
   let resultArr = new Array();
   for (let i = 0; i < src.length * 2; i++) {
-
-    resultArr.push(Object.assign({},src[i % 2]))
+    //保存重复的数据到数组中
+    resultArr.push(Object.assign({}, src[i % src.length]))
   }
   shuffle(resultArr)
+  console.log(resultArr)
   return resultArr
 }
 const BACK = 0,
@@ -27,14 +29,19 @@ var questions = [{
     src: "https://www.gsenglish.cn/pictures/20171222145725sheep31513925751.jpg",
     id: 0,
     status: BACK,
-
   },
   {
     src: "https://www.gsenglish.cn/pictures/20130808071726look%20down%5Ecat%20look%20down%5Ecat%5Elooked%20down.jpg",
     id: 1,
     status: BACK
+  },
+    {
+      src: "https://www.gsenglish.cn/pictures/20180107213957dog%5Ea%20dog%5Eone%20dog41515320930.jpg",
+    id: 2,
+    status: BACK
   }
 ]
+//
 //用户的回答，也就是点击了哪个索引！
 var g_answers = []
 //有几个正确的
@@ -73,16 +80,16 @@ Page({
     })
     //不管点击哪一个，都要先显示出来！
     let clickArray = Array.from(this.data.showArray)
-    console.log("original clickArray", clickArray, clickArray[index])
+    // console.log("original clickArray", clickArray, clickArray[index])
     clickArray[index].status  = IMAGE
-    console.log("child clicked! ", clickArray, clickArray[index])
+    // console.log("child clicked! ", clickArray, clickArray[index])
     this.setData({
       canClick: true,
       showArray: clickArray
     })
 
-
-    if (g_answers.length == questions.length) {
+    //如果回答是成对的，就要开始判断是否正确了！
+    if (g_answers.length == 2 ) {
       if (this.isAnswerRight()) {
         //todo 都不能再点击了，不然会出现其它错误！
 

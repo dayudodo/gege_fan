@@ -3,6 +3,9 @@
   <view wx:if="{{ _showback }}">
     <view class="item"></view>
   </view>
+  <view wx:elif="{{ _showright }}">
+    <view class="right"></view>
+  </view>
   <view wx:else>
     <image src="{{flip_src}}" mode='scaleToFill' hidden="{{ _hidden }}" class="item"></image>
   </view>
