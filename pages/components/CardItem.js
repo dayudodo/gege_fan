@@ -35,18 +35,18 @@ Component({
         switch (newVal) {
           case BACK:
             console.log('back')
-            // this.setData({
-            //   _showback:true
-            // })
+            this.data.canClick = false
             setTimeout(() => {
               //设置成新图片 
               this.setData({
                 _showback: true,
               })
+              this.data.canClick = true
             }, DELAY * 3)
             break;
           case RIGHT:
             console.log('right')
+            this.data.canClick = false
             setTimeout(() => {
               //设置成新图片 
               this.setData({
@@ -56,6 +56,7 @@ Component({
             break;
           case IMAGE:
             console.log('image')
+            this.data.canClick = false
             setTimeout(() => {
               //设置成新图片 
               this.setData({
@@ -63,6 +64,7 @@ Component({
                 flip_src: this.properties.src,
                 showEffect: ''
               })
+              this.data.canClick = true
             }, 750)
             break;
           default:
@@ -83,6 +85,7 @@ Component({
    */
   data: {
     _status: BACK,
+    canClick: true,
   },
 
   /**
@@ -96,7 +99,8 @@ Component({
         idx: this.properties.idx,
         itemid: this.properties.itemid
       }
-      if(this.properties.status != RIGHT){
+      //点击之后不再能够点击，除非旋转状态完成，并且不为right!
+      if(this.data.canClick ){
         this.triggerEvent('myclick', eventDetail)
         this.setData({
           showEffect: 'animated rotateIn'
