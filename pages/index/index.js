@@ -29,16 +29,19 @@ var questions = [{
     src: "https://www.gsenglish.cn/pictures/20171222145725sheep31513925751.jpg",
     id: 0,
     status: BACK,
+    canclick:true,
   },
   {
     src: "https://www.gsenglish.cn/pictures/20130808071726look%20down%5Ecat%20look%20down%5Ecat%5Elooked%20down.jpg",
     id: 1,
-    status: BACK
+    status: BACK,
+    canclick: true,
   },
     {
       src: "https://www.gsenglish.cn/pictures/20180107213957dog%5Ea%20dog%5Eone%20dog41515320930.jpg",
     id: 2,
-    status: BACK
+    status: BACK,
+    canclick: true
   }
 ]
 //

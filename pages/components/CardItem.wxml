@@ -1,5 +1,5 @@
 <!--pages/CardItem.wxml-->
-<view class="item {{showEffect}}" bindtap='clickCard'>
+<view class=" {{showEffect}}" bindtap='clickCard'>
   <view wx:if="{{ _showback }}">
     <view class="item"></view>
   </view>

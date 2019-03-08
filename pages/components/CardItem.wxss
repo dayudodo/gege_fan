@@ -3,19 +3,23 @@
 
 Page{
   --bg-color:rgb(18, 13, 87);
+  --size: 300rpx;
 }
+/* 默认状态下显示样式 */
 .item {
-  height: 200rpx;
-  width: 200rpx;
+  height: var(--size);
+  width: var(--size);
   background-color: var(--bg-color);
-  margin-bottom: 10rpx;
+  margin: 10rpx;
+  
 }
 
+/* 回答正确的时候显示样式 */
 .right {
-  height: 200rpx;
-  width: 200rpx;
+  height: var(--size);
+  width: var(--size);
   background-color: white;
-  margin-bottom: 10rpx;
+  margin: 10rpx;
 }
 
 /* .back {

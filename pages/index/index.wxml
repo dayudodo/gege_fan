@@ -1,9 +1,8 @@
 <!--index.wxml-->
-<view class="container">
+<view class="maingrid">
   <view wx:for="{{showArray}}" wx:for-index="idx" wx:key="idx">
-    <view wx:if="{{ item.right }}" class="hide"> </view>
-    <view wx:else>
-      <CardItem src="{{item.src}}" status="{{item.status}}" itemid="{{item.id}}" idx="{{idx}}" data-index="{{idx}}" bind:myclick="testChildClick"></CardItem>
-    </view>
+
+    <CardItem src="{{item.src}}" status="{{item.status}}" itemid="{{item.id}}" idx="{{idx}}" data-index="{{idx}}" bind:myclick="testChildClick"></CardItem>
+
   </view>
-</view>
+  </view>

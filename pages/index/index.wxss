@@ -3,3 +3,11 @@
   width: 200rpx;
   background-color: white;
 }
+
+.maingrid {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  /* transform-style:preserve-3d; */
+}
